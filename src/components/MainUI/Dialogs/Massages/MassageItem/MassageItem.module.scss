@@ -1,0 +1,10 @@
+.massagItem{
+	display: block;
+	min-width: 100px;
+	background-color: tomato;
+	border-radius: 10px;
+	padding: 10px;
+	&:not(:last-child){
+		margin-bottom: 10px;
+	}
+}
