@@ -69,12 +69,16 @@ const store = {
 			textMessage: 'hihi'
 		}
 	},
-	getState() {
-		return this._state
-	},
 	_callSubscribe (){
 		console.log('hi');
 	},
+	subscribe  (observer) {
+		this._callSubscribe = observer
+	},
+	getState() {
+		return this._state
+	},
+
 	addPost () {
 		let post = {
 			id: 5,
@@ -89,6 +93,7 @@ const store = {
 		this._state.profilePage.newPostText = newText
 		this._callSubscribe(this._state)
 	},
+
 	addMessage () {
 		let newMessage = {
 			id: 4,
@@ -103,8 +108,32 @@ const store = {
 		this._state.dialogsPage.textMessage = newText
 		this._callSubscribe(this._state)
 	},
-	subscribe  (observer) {
-		this._callSubscribe = observer
+
+	dispatch(action){
+		if(action.tipe === 'ADD-POST'){
+			let post = {
+				id: 5,
+				massage: this._state.profilePage.newPostText,
+				countLIke: 0
+			}
+			this._state.profilePage.posts.push(post)
+			this._state.profilePage.newPostText = ''
+			this._callSubscribe(this._state)
+		} else if (action.tipe === 'UPDATE-CHANGE-MESSAGE'){
+			this._state.profilePage.newPostText = action.newText
+			this._callSubscribe(this._state)
+		} else if (action.tipe === 'ADD-MESSAGE'){
+			let newMessage = {
+				id: 4,
+				massage: this._state.dialogsPage.textMessage
+			}
+			this._state.dialogsPage.massages.push(newMessage)
+			this._state.dialogsPage.textMessage = ''
+			this._callSubscribe(this._state)
+		} else if (action.tipe === 'UPDATE-CHANGE-MESSAGE'){
+			this._state.dialogsPage.textMessage = action.newText
+			this._callSubscribe(this._state)
+		}
 	}
 }
 

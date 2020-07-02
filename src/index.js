@@ -12,7 +12,8 @@ let renderEntireTree = (state) => {
 					 addPost={store.addPost.bind(store)}
 					 updateChangePost={store.updateChangePost.bind(store)}
 					 addMessage={store.addMessage.bind(store)}
-					 updateChangeMessage={store.updateChangeMessage.bind(store)}/>
+					 updateChangeMessage={store.updateChangeMessage.bind(store)
+					 }/>
 		</React.StrictMode>,
 		document.getElementById('root')
 	);
