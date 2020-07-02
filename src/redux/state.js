@@ -1,5 +1,6 @@
-import {renderEntireTree} from "../render";
-
+let renderEntireTree = () =>{
+	console.log('hi');
+}
 
 let state = {
 	profilePage: {
@@ -68,6 +69,7 @@ let state = {
 				massage: 'how are you?',
 			},
 		],
+		textMessage: 'hihi'
 	}
 }
 window.state = state
@@ -82,9 +84,29 @@ export let addPost = () => {
 	state.profilePage.newPostText = ''
 	renderEntireTree(state)
 }
-
 export let updateChangePost = (newText) => {
 	state.profilePage.newPostText = newText
 	renderEntireTree(state)
 }
+
+//message
+export const addMessage = () => {
+	let newMessage = {
+		id: 4,
+		massage: state.dialogsPage.textMessage
+	}
+	state.dialogsPage.massages.push(newMessage)
+	state.dialogsPage.textMessage = ''
+	renderEntireTree(state)
+
+}
+export const updateChangeMessage = (newText) => {
+	state.dialogsPage.textMessage = newText
+	renderEntireTree(state)
+}
+
+export const subscribe = (observer) =>{
+	renderEntireTree = observer
+}
+
 export default state

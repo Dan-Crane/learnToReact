@@ -4,12 +4,13 @@ import Massages from "./Massages/Massages";
 import Users from "./Users/Users";
 
 const Dialogs = (props) => {
-	console.log(props.state.massage);
 	return (
 		<div className={s.wrapper}>
-
-			<Users users={props.state.users}/>
-			<Massages massages={props.state.massages}/>
+			<Users users={props.dialogsPage.users}/>
+			<Massages massages={props.dialogsPage.massages}
+								textMessage={props.dialogsPage.textMessage}
+								addMessage={props.addMessage}
+								updateChangeMessage={props.updateChangeMessage}/>
 		</div>
 	)
 }

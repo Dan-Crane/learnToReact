@@ -12,7 +12,10 @@ const Massages = (props) => {
 			<div className={s.massages}>
 				{renderData}
 			</div>
-			<SendMessage />
+			<SendMessage
+				textMessage={props.textMessage}
+				addMessage={props.addMessage}
+				updateChangeMessage={props.updateChangeMessage}/>
 		</div>
 	)
 }
