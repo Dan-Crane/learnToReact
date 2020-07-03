@@ -5,15 +5,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 let renderEntireTree = (state) => {
-	debugger
 	ReactDOM.render(
 		<React.StrictMode>
 			<App state={state}
-					 addPost={store.addPost.bind(store)}
-					 updateChangePost={store.updateChangePost.bind(store)}
-					 addMessage={store.addMessage.bind(store)}
-					 updateChangeMessage={store.updateChangeMessage.bind(store)
-					 }/>
+					 dispatch={store.dispatch.bind(store)}/>
 		</React.StrictMode>,
 		document.getElementById('root')
 	);

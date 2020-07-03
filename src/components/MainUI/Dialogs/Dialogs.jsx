@@ -9,8 +9,7 @@ const Dialogs = (props) => {
 			<Users users={props.dialogsPage.users}/>
 			<Massages massages={props.dialogsPage.massages}
 								textMessage={props.dialogsPage.textMessage}
-								addMessage={props.addMessage}
-								updateChangeMessage={props.updateChangeMessage}/>
+								dispatch={props.dispatch}/>
 		</div>
 	)
 }

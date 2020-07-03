@@ -1,3 +1,7 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
+
 const store = {
 	_state: {
 		profilePage: {
@@ -67,77 +71,27 @@ const store = {
 				},
 			],
 			textMessage: 'hihi'
-		}
+		},
+		sidebarPage: '',
 	},
-	_callSubscribe (){
+	_callSubscribe() {
 		console.log('hi');
 	},
-	subscribe  (observer) {
+	subscribe(observer) {
 		this._callSubscribe = observer
 	},
 	getState() {
 		return this._state
 	},
 
-	addPost () {
-		let post = {
-			id: 5,
-			massage: this._state.profilePage.newPostText,
-			countLIke: 0
-		}
-		this._state.profilePage.posts.push(post)
-		this._state.profilePage.newPostText = ''
-		this._callSubscribe(this._state)
-	},
-	updateChangePost  (newText) {
-		this._state.profilePage.newPostText = newText
-		this._callSubscribe(this._state)
-	},
+	dispatch(action) {
+		this._state.profilePage = profileReducer(this._state.profilePage, action)
+		this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+		this._state.sidebarPage = sidebarReducer(this._state.profilePage, action)
 
-	addMessage () {
-		let newMessage = {
-			id: 4,
-			massage: this._state.dialogsPage.textMessage
-		}
-		this._state.dialogsPage.massages.push(newMessage)
-		this._state.dialogsPage.textMessage = ''
 		this._callSubscribe(this._state)
-
-	},
-	updateChangeMessage (newText) {
-		this._state.dialogsPage.textMessage = newText
-		this._callSubscribe(this._state)
-	},
-
-	dispatch(action){
-		if(action.tipe === 'ADD-POST'){
-			let post = {
-				id: 5,
-				massage: this._state.profilePage.newPostText,
-				countLIke: 0
-			}
-			this._state.profilePage.posts.push(post)
-			this._state.profilePage.newPostText = ''
-			this._callSubscribe(this._state)
-		} else if (action.tipe === 'UPDATE-CHANGE-MESSAGE'){
-			this._state.profilePage.newPostText = action.newText
-			this._callSubscribe(this._state)
-		} else if (action.tipe === 'ADD-MESSAGE'){
-			let newMessage = {
-				id: 4,
-				massage: this._state.dialogsPage.textMessage
-			}
-			this._state.dialogsPage.massages.push(newMessage)
-			this._state.dialogsPage.textMessage = ''
-			this._callSubscribe(this._state)
-		} else if (action.tipe === 'UPDATE-CHANGE-MESSAGE'){
-			this._state.dialogsPage.textMessage = action.newText
-			this._callSubscribe(this._state)
-		}
 	}
 }
-
-//message
 
 window.state = store
 

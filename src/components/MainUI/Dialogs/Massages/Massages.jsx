@@ -14,8 +14,7 @@ const Massages = (props) => {
 			</div>
 			<SendMessage
 				textMessage={props.textMessage}
-				addMessage={props.addMessage}
-				updateChangeMessage={props.updateChangeMessage}/>
+				dispatch={props.dispatch}/>
 		</div>
 	)
 }
