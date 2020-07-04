@@ -1,15 +1,14 @@
 import React from "react";
 import s from './Dialogs.module.scss'
-import Massages from "./Massages/Massages";
-import Users from "./Users/Users";
+import MassagesContainer from "./Massages/MassagesContainer";
+import UsersContainer from "./Users/UsersContainer";
 
 const Dialogs = (props) => {
 	return (
 		<div className={s.wrapper}>
-			<Users users={props.dialogsPage.users}/>
-			<Massages massages={props.dialogsPage.massages}
-								textMessage={props.dialogsPage.textMessage}
-								dispatch={props.dispatch}/>
+			<UsersContainer store={props.store}/>
+			<MassagesContainer
+				store={props.store}/>
 		</div>
 	)
 }

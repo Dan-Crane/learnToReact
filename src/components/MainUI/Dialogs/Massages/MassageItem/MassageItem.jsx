@@ -1,9 +1,10 @@
 import React from "react";
 import s from './MassageItem.module.scss'
 
-const MassageItam = (props) => {
+const MassageItem = (props) => {
+
 	return (
-		<span className={s.massagItem}>{props.massage}</span>
+		<span className={s.messageItem}>{props.message}</span>
 	)
 }
-export default MassageItam
+export default MassageItem

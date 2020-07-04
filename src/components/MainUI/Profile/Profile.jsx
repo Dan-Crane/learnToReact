@@ -4,13 +4,13 @@ import ShortInfo from "./ShortInfo/ShortInfo";
 import ProfilePage from "./ProfilePage/ProfilePage";
 
 const Profile = (props) => {
-	return(
+
+	return (
 		<div className='profile'>
-			<ShortInfo state={props.state.shortInfo}/>
+			<ShortInfo
+				store={props.store}/>
 			<ProfilePage
-				posts={props.state.posts}
-				newPostText={props.state.newPostText}
-				dispatch={props.dispatch}/>
+				store={props.store}/>
 		</div>
 	)
 }
