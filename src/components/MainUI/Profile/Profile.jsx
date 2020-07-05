@@ -7,10 +7,8 @@ const Profile = (props) => {
 
 	return (
 		<div className='profile'>
-			<ShortInfo
-				store={props.store}/>
-			<ProfilePage
-				store={props.store}/>
+			<ShortInfo/>
+			<ProfilePage/>
 		</div>
 	)
 }

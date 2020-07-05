@@ -1,9 +1,9 @@
 import React from "react";
-import s from './Massages.module.scss'
-import MassageItem from "./MassageItem/MassageItem";
+import s from './Messages.module.scss'
+import MessageItem from "./MessageItem/MessageItem";
 
-const Massages = (props) => {
-	let messageElement = props.messages.map(m => <MassageItem message={m.massage}/>)
+const Messages = (props) => {
+	let messageElement = props.messages.map(m => <MessageItem message={m.massage}/>)
 
 	const SendMassageItem = () => {
 		props.sendMessage()
@@ -11,7 +11,7 @@ const Massages = (props) => {
 
 	const onChangeValue = (e) => {
 		let text = e.target.value
-		props.onChange(text)
+		props.changeMessage(text)
 	}
 
 	return (
@@ -26,4 +26,4 @@ const Massages = (props) => {
 		</div>
 	)
 }
-export default Massages
+export default Messages

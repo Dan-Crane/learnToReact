@@ -17,11 +17,9 @@ let App = (props) => {
 			<Navbar/>
 			<div className='wrapper__content'>
 				<Route path='/profile'
-							 render={() => <Profile
-								 store={props.store}/>}/>
+							 render={() => <Profile/>}/>
 				<Route path='/dialogs'
-							 render={() => <Dialogs
-								 store={props.store}/>}/>
+							 render={() => <Dialogs/>}/>
 				<Route path='/news' component={News}/>
 				<Route path='/music' component={Music}/>
 				<Route path='/settings' component={Settings}/>
