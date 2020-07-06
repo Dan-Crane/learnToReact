@@ -3,7 +3,7 @@ import s from './Messages.module.scss'
 import MessageItem from "./MessageItem/MessageItem";
 
 const Messages = (props) => {
-	let messageElement = props.messages.map(m => <MessageItem message={m.massage}/>)
+	let messageElement = props.messages.map(m => <MessageItem message={m.massage} key={m.id}/>)
 
 	const SendMassageItem = () => {
 		props.sendMessage()

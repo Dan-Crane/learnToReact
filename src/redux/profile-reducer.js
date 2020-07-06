@@ -24,14 +24,17 @@ const initialState = {
 	shortInfo: {
 		friends: [
 			{
+				id: 1,
 				avatar: 'https://www.pngfind.com/pngs/m/298-2988203_donald-trump-donald-trump-face-pixel-art-hd.png',
 				name: 'Ivan',
 			},
 			{
+				id: 2,
 				avatar: 'https://st4.depositphotos.com/1494134/20836/v/1600/depositphotos_208365754-stock-illustration-pixel-red-cat-portrait-detailed.jpg',
 				name: 'Julia',
 			},
 			{
+				id: 3,
 				avatar: 'https://thumbs.dreamstime.com/z/vector-pixel-art-black-man-face-isolated-cartoon-vector-pixel-art-black-man-face-121405039.jpg',
 				name: 'Leha'
 			}
