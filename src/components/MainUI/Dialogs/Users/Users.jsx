@@ -3,7 +3,7 @@ import s from './Users.module.scss'
 import UserItem from "./UserItem/UserItem";
 
 const Users = (props) => {
-	let usersData = props.users.map(n => <UserItem id={n.id} name={n.name}/>)
+	let usersData = props.users.map(n => <UserItem id={n.id} key={n.id} name={n.name}/>)
 	return (
 		<div>
 			{usersData}

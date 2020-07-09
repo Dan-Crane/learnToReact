@@ -59,7 +59,7 @@ const profileReducer = (state = initialState, action) => {
 		}
 		case UPDATE_CHANGE_POST: {
 			let stateCopy = {...state}
-			stateCopy.newPostText = action.newText
+			stateCopy.newPostText = action.text
 			return stateCopy
 		}
 		default:
@@ -68,6 +68,6 @@ const profileReducer = (state = initialState, action) => {
 }
 
 export const addPostActionCreator = () => ({type: ADD_POST})
-export const updateChangePostActionCreator = (text) => ({type: UPDATE_CHANGE_POST, newText: text})
+export const updateChangePostActionCreator = (text) => ({type: UPDATE_CHANGE_POST,  text})
 
 export default profileReducer

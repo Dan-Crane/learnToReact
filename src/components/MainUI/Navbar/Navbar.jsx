@@ -22,6 +22,12 @@ const Navbar = () => {
 					</NavLink>
 				</li>
 				<li>
+					<NavLink to='/users'>
+						<img className='main-nav__img' src={navBar2} alt=""/>
+						<span className='main-nav__text'>Users</span>
+					</NavLink>
+				</li>
+				<li>
 					<NavLink to='/news'>
 						<img className='main-nav__img' src={navBar2} alt=""/>
 						<span className='main-nav__text'>News</span>
