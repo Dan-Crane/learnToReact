@@ -58,9 +58,10 @@ const profileReducer = (state = initialState, action) => {
 			return stateCope
 		}
 		case UPDATE_CHANGE_POST: {
-			let stateCopy = {...state}
-			stateCopy.newPostText = action.text
-			return stateCopy
+			return {
+				...state,
+				newPostText: action.text
+			}
 		}
 		default:
 			return state
