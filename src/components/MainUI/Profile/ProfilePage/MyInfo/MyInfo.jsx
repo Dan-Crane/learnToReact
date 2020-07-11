@@ -3,11 +3,12 @@ import s from './MyInfo.module.scss'
 
 const MyInfo = (props) => (
 	<div className={s.myInfo}>
-		<span className={s.name}>Ильдар Скриптизеров</span>
-		<span className={s.whenBirthDay + ' ' + s.info}>Дата рождения:</span>
-		<span className={s.birthDay + ' ' + s.info}>2007</span>
-		<span className={s.whereSity + ' ' + s.info}>Город:</span>
-		<span className={s.sity + ' ' + s.info}>Сказка</span>
+		<span className={s.name}>{props.profile.fullName}</span>
+		<span className={s.lookingForAJob}>{props.profile.lookingForAJob ? <div>I am looging for a job</div>
+		: <div>I am not looking for a job</div>}</span>
+		<span className={s.lookingForAJobDescription}>
+			{props.profile.lookingForAJobDescription}
+		</span>
 	</div>
 )
 

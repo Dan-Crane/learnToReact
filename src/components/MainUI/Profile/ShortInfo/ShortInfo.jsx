@@ -5,7 +5,10 @@ import FriendsContainer from "./Friends/FriendsContainer";
 const ShortInfo = (props) => {
 	return (
 		<div className='short-info'>
-			<img className='short-info__avatar' src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/932cd161086663.5a62bce65c4a1.png" alt=""/>
+			<img className='short-info__avatar' src={!props.photo ? "https://mir-s3-cdn-cf.behance.net/project_modules/disp/932cd161086663.5a62bce65c4a1.png"
+			: props.photo}
+
+					 alt=""/>
 			<div className='short-info__friends'>
 				<span>Your friends</span>
 				<FriendsContainer/>

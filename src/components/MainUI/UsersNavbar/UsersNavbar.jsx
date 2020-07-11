@@ -23,7 +23,7 @@ const UsersNavbar = (props) => {
 				{
 					props.users.map(u => <div key={u.id} className={s.userItem}>
 						<div className={s.avaAndBtn}>
-							<NavLink to={`/profile/ ${u.id}`}>
+							<NavLink to={'/profile/' + u.id}>
 								<img
 									src={u.photos.small != null ? u.photos.small : 'https://3dnews.ru/assets/external/illustrations/2018/02/01/964971/theres-one-simple-reason-nintendo-is-bringing-super-mario-to-the-iphone-first.jpg'}
 									className={s.avatar} alt="avatar"/>

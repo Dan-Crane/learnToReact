@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_CHANGE_POST = 'UPDATE-CHANGE-POST';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 const initialState = {
 	posts: [
@@ -39,7 +40,8 @@ const initialState = {
 				name: 'Leha'
 			}
 		]
-	}
+	},
+	profile: null,
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -63,6 +65,12 @@ const profileReducer = (state = initialState, action) => {
 				newPostText: action.text
 			}
 		}
+		case SET_USER_PROFILE : {
+			return {
+				...state,
+				profile: action.user
+			}
+		}
 		default:
 			return state
 	}
@@ -70,5 +78,6 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateChangePostActionCreator = (text) => ({type: UPDATE_CHANGE_POST,  text})
+export const setUserProfile = (user) => ({type: SET_USER_PROFILE,  user})
 
 export default profileReducer

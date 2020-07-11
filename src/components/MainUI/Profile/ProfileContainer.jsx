@@ -1,24 +1,26 @@
 import React from "react";
-import './Profile.scss'
-import ShortInfo from "./ShortInfo/ShortInfo";
-import ProfilePage from "./ProfilePage/ProfilePage";
-
-const Profile = (props) => {
-
-	return (
-		<div className='profile'>
-			<ShortInfo/>
-			<ProfilePage/>
-		</div>
-	)
-}
-
-
+import {connect} from "react-redux";
+import Profile from "./Profile";
+import * as axios from "axios";
+import {setUserProfile} from "../../../redux/profile-reducer";
 
 class ProfileContainer extends React.Component{
-	render() {
+	componentDidMount() {
+		axios.get(`https://social-network.samuraijs.com/api/1.0/profile/10`)
+			.then(response => {
+				this.props.setUserProfile(response.data)
+			})
+	}
 
+	render() {
+		return <Profile {...this.props} profile={this.props.profile}/>
 	}
 }
 
-export default Profile;
+const mapStateToProps = (state)=> ({
+	profile: state.profilePage.profile,
+})
+
+export default connect (mapStateToProps, {
+	setUserProfile,
+})(ProfileContainer)
