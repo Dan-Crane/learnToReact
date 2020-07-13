@@ -1,5 +1,5 @@
 .header{
-	background-color: tomato;
+	background-color: tan;
 	display: grid;
 	grid-template-columns:
 		min-content
@@ -7,6 +7,9 @@
 		min-content;
 	column-gap: 10px;
 	grid-area: header;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	&__img{
 		max-width: 100px;
 	}
@@ -15,13 +18,14 @@
 	}
 	&__login{
 		justify-self: stretch;
-		align-self: stretch;
-		min-width: 128px;
-		//background-color: tomato;
+		background-color: tomato;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-
+		cursor: pointer;
+		//flex: 0 1 50px;
+		padding: 10px;
+		border-radius: 50px;
 	}
 }
 

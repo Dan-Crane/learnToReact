@@ -3,21 +3,22 @@ import {connect} from "react-redux";
 import UsersNavbar from "./UsersNavbar";
 import {
 	follow,
-	setCurrentPage, setToggleIsFetching,
+	setCurrentPage, setToggleIsFetching, setToggleIsProgress,
 	setTotalCountUsers,
 	setUsers,
 	unfollow
 } from "../../../redux/users-navbar-reducer";
 import * as axios from "axios";
+import {getUser, usersAPI} from "../../../api/api";
 
 
 class UsersNavbarAPI extends React.Component {
 	componentDidMount() {
 		this.props.setToggleIsFetching(true)
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-			.then(response => {
-				this.props.setUsers(response.data.items)
-				this.props.setTotalCountUsers(response.data.totalCount)
+		usersAPI.getUser(this.props.currentPage, this.props.pageSize)
+			.then(data => {
+				this.props.setUsers(data.items)
+				this.props.setTotalCountUsers(data.totalCount)
 				this.props.setToggleIsFetching(false)
 			})
 	}
@@ -25,9 +26,9 @@ class UsersNavbarAPI extends React.Component {
 	onPageChanged = (pageNumber) => {
 		this.props.setCurrentPage(pageNumber)
 		this.props.setToggleIsFetching(true)
-		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
-			.then(response => {
-				this.props.setUsers(response.data.items)
+		usersAPI.getUser(pageNumber, this.props.pageSize)
+			.then(data => {
+				this.props.setUsers(data.items)
 				this.props.setToggleIsFetching(false)
 			})
 	}
@@ -41,6 +42,8 @@ class UsersNavbarAPI extends React.Component {
 												unfollow={this.props.unfollow}
 												onPageChanged={this.onPageChanged}
 												isFetching={this.props.isFetching}
+												setToggleIsProgress={this.props.setToggleIsProgress}
+												followingInProgress={this.props.followingInProgress}
 		/>
 	}
 }
@@ -52,6 +55,7 @@ const matStateToProps = (state) => (
 		pageSize: state.usersNavbar.pageSize,
 		currentPage: state.usersNavbar.currentPage,
 		isFetching: state.usersNavbar.isFetching,
+		followingInProgress: state.usersNavbar.followingInProgress
 	})
 
 const UsersNavbarContainer = connect(matStateToProps, {
@@ -61,6 +65,7 @@ const UsersNavbarContainer = connect(matStateToProps, {
 	setCurrentPage,
 	setTotalCountUsers,
 	setToggleIsFetching,
+	setToggleIsProgress
 })(UsersNavbarAPI)
 
 export default UsersNavbarContainer
