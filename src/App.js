@@ -9,6 +9,7 @@ import Settings from "./components/MainUI/Settings/Settings";
 import UsersNavbarContainer from "./components/MainUI/UsersNavbar/UsersNavbarContainer";
 import ProfileContainer from "./components/MainUI/Profile/ProfileContainer";
 import HeaderContainer from "./components/MainUI/Header/HeaderContainer";
+import Login from "./components/MainUI/Login/Login";
 
 
 let App = (props) => {
@@ -26,6 +27,8 @@ let App = (props) => {
 				<Route path='/news' component={News}/>
 				<Route path='/music' component={Music}/>
 				<Route path='/settings' component={Settings}/>
+				<Route path='/login'
+							 render={()=> <Login/>}/>
 			</div>
 		</div>
 	);
