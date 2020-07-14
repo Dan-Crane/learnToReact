@@ -4,8 +4,8 @@ import UsersNavbar from "./UsersNavbar";
 import {
 	follow,
 	getUsers,
-	setCurrentPage, setToggleIsProgress,
-	setTotalCountUsers, unfollow,
+	setCurrentPage,
+	unfollow,
 } from "../../../redux/users-navbar-reducer";
 
 
@@ -20,16 +20,16 @@ class UsersNavbarAPI extends React.Component {
 	}
 
 	render() {
-		return <UsersNavbar users={this.props.users}
-												totalCountUsers={this.props.totalCountUsers}
-												pageSize={this.props.pageSize}
-												currentPage={this.props.currentPage}
-												follow={this.props.follow}
-												unfollow={this.props.unfollow}
+		return <UsersNavbar {...this.props}
 												onPageChanged={this.onPageChanged}
-												isFetching={this.props.isFetching}
-												setToggleIsProgress={this.props.setToggleIsProgress}
-												followingInProgress={this.props.followingInProgress}
+			// users={this.props.users}
+			// totalCountUsers={this.props.totalCountUsers}
+			// pageSize={this.props.pageSize}
+			// currentPage={this.props.currentPage}
+			// follow={this.props.follow}
+			// unfollow={this.props.unfollow}
+			// isFetching={this.props.isFetching}
+			// followingInProgress={this.props.followingInProgress}
 		/>
 	}
 }
@@ -46,8 +46,6 @@ const matStateToProps = (state) => (
 
 const UsersNavbarContainer = connect(matStateToProps, {
 	setCurrentPage,
-	setTotalCountUsers,
-	setToggleIsProgress,
 	getUsers,
 	follow,
 	unfollow
