@@ -3,34 +3,20 @@ import {connect} from "react-redux";
 import UsersNavbar from "./UsersNavbar";
 import {
 	follow,
-	setCurrentPage, setToggleIsFetching, setToggleIsProgress,
-	setTotalCountUsers,
-	setUsers,
-	unfollow
+	getUsers,
+	setCurrentPage, setToggleIsProgress,
+	setTotalCountUsers, unfollow,
 } from "../../../redux/users-navbar-reducer";
-import * as axios from "axios";
-import {getUser, usersAPI} from "../../../api/api";
 
 
 class UsersNavbarAPI extends React.Component {
 	componentDidMount() {
-		this.props.setToggleIsFetching(true)
-		usersAPI.getUser(this.props.currentPage, this.props.pageSize)
-			.then(data => {
-				this.props.setUsers(data.items)
-				this.props.setTotalCountUsers(data.totalCount)
-				this.props.setToggleIsFetching(false)
-			})
+		this.props.getUsers(this.props.currentPage, this.props.pageSize)
 	}
 
 	onPageChanged = (pageNumber) => {
 		this.props.setCurrentPage(pageNumber)
-		this.props.setToggleIsFetching(true)
-		usersAPI.getUser(pageNumber, this.props.pageSize)
-			.then(data => {
-				this.props.setUsers(data.items)
-				this.props.setToggleIsFetching(false)
-			})
+		this.props.getUsers(pageNumber, this.props.pageSize)
 	}
 
 	render() {
@@ -59,13 +45,12 @@ const matStateToProps = (state) => (
 	})
 
 const UsersNavbarContainer = connect(matStateToProps, {
-	follow,
-	unfollow,
-	setUsers,
 	setCurrentPage,
 	setTotalCountUsers,
-	setToggleIsFetching,
-	setToggleIsProgress
+	setToggleIsProgress,
+	getUsers,
+	follow,
+	unfollow
 })(UsersNavbarAPI)
 
 export default UsersNavbarContainer

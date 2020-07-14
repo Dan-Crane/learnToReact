@@ -10,7 +10,7 @@ const Navbar = () => {
 		<nav className='main-nav'>
 			<ul>
 				<li>
-					<NavLink to='/profile'>
+					<NavLink to='/profile/2'>
 						<img className='main-nav__img' src={navBar1} alt=""/>
 						<span className='main-nav__text'>Profile</span>
 					</NavLink>

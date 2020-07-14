@@ -2,7 +2,7 @@ import React from "react";
 import s from './UsersNavbar.module.scss'
 import Preloader from "../Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
+
 
 const UsersNavbar = (props) => {
 	let pagesCount = Math.ceil(props.totalCountUsers / props.pageSize)
@@ -32,36 +32,12 @@ const UsersNavbar = (props) => {
 							{u.followed
 								?
 								<button className={s.btn} disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-									props.setToggleIsProgress(true, u.id)
-									axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-										withCredentials: true,
-										headers: {
-											'API-KEY': 'b1662927-0a8d-494b-98c5-a1db1fd2ebf7'
-										}
-									})
-										.then(response => {
-											if (response.data.resultCode === 0) {
-												props.unfollow(u.id)
-											}
-											props.setToggleIsProgress(false, u.id)
-										})
+									props.unfollow(u.id)
 								}
 								}>Unfollow</button>
 								:
 								<button className={s.btn} disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-									props.setToggleIsProgress(true, u.id)
-									axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-										withCredentials: true,
-										headers: {
-											'API-KEY': 'b1662927-0a8d-494b-98c5-a1db1fd2ebf7'
-										}
-									})
-										.then(response => {
-											if (response.data.resultCode === 0) {
-												props.follow(u.id)
-											}
-											props.setToggleIsProgress(false, u.id)
-										})
+									props.follow(u.id)
 								}
 								}>Follow</button>}
 						</div>
