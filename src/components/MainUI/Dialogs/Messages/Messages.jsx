@@ -1,7 +1,6 @@
 import React from "react";
 import s from './Messages.module.scss'
 import MessageItem from "./MessageItem/MessageItem";
-import {Redirect} from "react-router-dom";
 
 const Messages = (props) => {
 	let messageElement = props.messages.map(m => <MessageItem message={m.massage} key={m.id}/>)
@@ -15,7 +14,6 @@ const Messages = (props) => {
 		props.changeMessage(text)
 	}
 
-	if(!props.isAuth) return <Redirect to={'/login'} />
 	return (
 		<div className={s.wrapper}>
 			<div className={s.messages}>

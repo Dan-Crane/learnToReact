@@ -14,9 +14,11 @@ const Header = (props) => {
 			{/*	<input className='search-header__input' type="text" placeholder='Поиск...' aria-label='Поиск по сайту.'/>*/}
 			{/*	<button className='search-header__btn'>Найти</button>*/}
 			{/*</form>*/}
-			{props.isAuth ? props.login : <NavLink to='/login'>
-				<button className='header__login'> log in</button>
-			</NavLink>}
+			{props.isAuth
+				? props.login
+				: <NavLink to='/login'>
+					<button className='header__login'> log in</button>
+				</NavLink>}
 		</header>
 	)
 }

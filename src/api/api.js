@@ -22,11 +22,30 @@ export const usersAPI = {
 			.then(res => res.data)
 	},
 	getProfile(userId) {
+		console.warn('"getProfile" needs to be change')
+		return profileAPI.getProfile(userId)
+	}
+}
+
+export const profileAPI = {
+	getProfile(userId) {
 		return instanceAPI.get(`profile/${userId}`)
 			.then(res => {
 				return res.data
 			})
-	}
+	},
+	getStatus(userId){
+		return instanceAPI.get(`status/${userId}`)
+			.then(res => {
+				return res.data
+			})
+	},
+	updateStatus(status){
+		return instanceAPI.put(`status/`, {status : status})
+			.then(res => {
+				return res.data
+			})
+	},
 }
 
 export const authAPI = {
